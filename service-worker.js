@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/HotsAdvisor/precache-manifest.c9d5df77e4fe3595990d756af2e8cb47.js"
+  "/HotsAdvisor/precache-manifest.70b2bf7b5bdd833a97b787d1628308f7.js"
 );
 
 workbox.clientsClaim();
