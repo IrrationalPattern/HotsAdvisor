@@ -13,14 +13,7 @@ const database = firebase.database();
 
 (async () => {
     const heroes = await heroesService.getHeroes();
-    const toProperHeroesNames = R.pipe(
-        R.prop('PrimaryName'),
-        R.toLower,
-        R.replace(/\'/g, ''),
-        R.replace(/[\.\s]/g, '-'),
-        R.replace(/--/g, '-')
-    );
-    const heroesNames = heroes.map(toProperHeroesNames);
+    const heroesNames = heroes.map(R.prop('short_name'));
     const heroesInfo = await scrapHeroesInfo(R.zip(heroesNames, heroes));
 
     database

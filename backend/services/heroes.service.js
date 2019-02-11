@@ -1,16 +1,18 @@
 const axios = require('axios');
 const config = require('../config/config');
 
-module.exports = class HeroesService {
+class HeroesService {
     static async getHeroes() {
-        const response = await axios.get(`${config.API.HEROES}/Heroes`);
+        const response = await axios.get(`${config.API.BASE}${config.API.HEROES}`);
         
         return response.data;
     }
 
     static async getMaps() {
-        const response = await axios.get(`${config.API.HEROES}/Maps`);
+        const response = await axios.get(`${config.API.BASE}${config.API.MAPS}`);
 
         return response.data;
     }
-};
+}
+
+module.exports = HeroesService;

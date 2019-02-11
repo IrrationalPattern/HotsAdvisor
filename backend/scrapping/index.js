@@ -7,8 +7,6 @@ module.exports = async (heroes) => {
        const browser = await puppeteer.launch();
        const page = await browser.newPage();
        const data = [];
-       
-       //console.log(heroes);
 
        for (let i = 0; i < heroes.length; i++) {
            data.push(await getHeroInfo(page, heroes[i]));
