@@ -5,8 +5,6 @@ import Typography from '@material-ui/core/Typography/Typography';
 import AppBar from '@material-ui/core/AppBar/AppBar';
 
 function Header() {
-
-
     return (
         <AppBar position="static" color="default">
             <Toolbar>
