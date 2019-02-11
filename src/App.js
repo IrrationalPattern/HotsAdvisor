@@ -5,10 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/styles';
 
 import Firebase from './shared/services/firebase.service';
-import FirebaseContext from './shared/components/FirebaseContext';
 
 import Header from './shared/components/Header';
-
 import HeroesService from './feature/heroes/services/heroes.service';
 import DraftPage from './feature/heroes/containers/draft-page/DraftPage';
 
@@ -24,12 +22,12 @@ const useStyles = makeStyles({
     },
 });
 
-function App() {
+function App(props) {
     const [firebaseInstance] = useState(new Firebase());
     const [heroesInfo, setHeroesInfo] = useState(null);
     const [draftInfo, setDraftInfo] = useState(null);
     const classes = useStyles();
-
+    
     async function getHeroes() {
         return await HeroesService.getHeroes();
     }
@@ -45,30 +43,28 @@ function App() {
                         setHeroesInfo(heroesInfo);
                     });
             });
-    });
+    }, []);
 
     return (
-        <FirebaseContext.Provider value={firebaseInstance}>
-            <Grid container className={classes.appContainer}>
-                <Header />
-                <Grid item container>
-                    {
-                        heroesInfo
-                            ? <DraftPage
-                                heroesInfo={heroesInfo}
-                                draftInfo={draftInfo}
+        <Grid container className={classes.appContainer}>
+            <Header/>
+            <Grid item container>
+                {
+                    heroesInfo
+                        ? <DraftPage
+                            heroesInfo={heroesInfo}
+                            draftInfo={draftInfo}
+                        />
+                        : <Grid item className={classes.progress}>
+                            <CircularProgress
+                                color="secondary"
+                                size={100}
+                                thickness={4}
                             />
-                            : <Grid item className={classes.progress}>
-                                <CircularProgress
-                                    color="secondary"
-                                    size={100}
-                                    thickness={4}
-                                />
-                            </Grid>
-                    }
-                </Grid>
+                        </Grid>
+                }
             </Grid>
-        </FirebaseContext.Provider>
+        </Grid>
     );
 }
 
