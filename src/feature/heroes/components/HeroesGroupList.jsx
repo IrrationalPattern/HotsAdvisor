@@ -5,7 +5,7 @@ import Paper from '@material-ui/core/Paper/Paper';
 import Grid from '@material-ui/core/Grid/Grid';
 import Typography from '@material-ui/core/Typography/Typography';
 
-import HeroCard from './HeroCard';
+import HeroCard from 'shared/components/HeroCard';
 
 const styles = {
     heroList: {
