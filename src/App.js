@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
 import Firebase from './shared/services/firebase.service';
 import FirebaseContext from './shared/components/FirebaseContext';
+
+import Header from './shared/components/Header';
 
 import HeroesService from './feature/heroes/services/heroes.service';
 import DraftPage from './feature/heroes/containers/draft-page/DraftPage';
@@ -56,13 +55,7 @@ class App extends Component {
         return (
             <FirebaseContext.Provider value={this.state.firebaseInst}>
                 <Grid container className={classes.appContainer}>
-                    <AppBar position="static" color="default">
-                        <Toolbar>
-                            <Typography variant="h6" color="inherit">
-                                Hots Advisor
-                            </Typography>
-                        </Toolbar>
-                    </AppBar>
+                    <Header />
                     <Grid item container>
                         {
                             this.state.heroesInfo
